@@ -27,7 +27,7 @@ st.write("This demo app shows how to use the `DynamicFilters` class of the `stre
              "The filters apply to a dataframe and adjust their values based on the user selection (similar to Google Sheets slicers or Only Relevant Values in Tableau).")
 
 """How to install and use the package:
-1. Install the package using [pip](https://pypi.org/project/streamlit-dynamic-filters/0.1.1/):
+1. Install the package using [pip](https://pypi.org/project/streamlit-dynamic-filters/):
     ```pip install streamlit-dynamic-filters```
 2. Import the `DynamicFilters` class:
     ```from streamlit_dynamic_filters import DynamicFilters```
