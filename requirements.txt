@@ -1,0 +1,3 @@
+streamlit==1.25.0
+streamlit_dynamic_filters
+pandas
