@@ -26,12 +26,26 @@ data = {
                  'Brooklyn', 'Midtown', 'Kensington', 'Circular Quay',
                  'Queens', 'Uptown', 'Camden', 'Bondi']
 }
+dates = {
+    'years': [
+        '2022', '2022', '2022', '2022', '2022', '2022', '2022', '2022', '2022', '2022', '2022', '2022',
+        '2023', '2023', '2023', '2023', '2023', '2023', '2023', '2023', '2023', '2023', '2023', '2023',
+        '2024', '2024', '2024', '2024', '2024', '2024', '2024', '2024', '2024', '2024', '2024', '2024',
+              ],
+    'months': [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ]
+}
 
 df = pd.DataFrame(data)
+dt = pd.DataFrame(dates)
 
 st.header("Dynamic Multi Select Filters in Streamlit")
-st.write("This demo app shows how to use the `DynamicFilters` class of the `streamlit-dynamic-filters` [package](https://github.com/arsentievalex/streamlit-dynamic-filters). "
-             "The filters apply to a dataframe and adjust their values based on the user selection (similar to Google Sheets slicers or Only Relevant Values in Tableau).")
+st.write(
+    "This demo app shows how to use the `DynamicFilters` class of the `streamlit-dynamic-filters` [package](https://github.com/arsentievalex/streamlit-dynamic-filters). "
+    "The filters apply to a dataframe and adjust their values based on the user selection (similar to Google Sheets slicers or Only Relevant Values in Tableau).")
 
 """How to install and use the package:
 1. Install the package using [pip](https://pypi.org/project/streamlit-dynamic-filters/):
@@ -85,22 +99,28 @@ dynamic_filters.display_df()
 with st.expander("See this app's code"):
     st.code(code, language='python')
 
-dynamic_filters = DynamicFilters(df, filters=['region', 'country', 'city', 'district'])
+dynamic_filters = DynamicFilters(df, filters=['region', 'country', 'city', 'district'], filters_name='data2')
+dynamic_filters_dates = DynamicFilters(dt, filters=['years', 'months'], filters_name='dates2')
 
 # display filters in the sidebar
 with st.sidebar:
     st.write("Apply filters in any order 👇")
 
 dynamic_filters.display_filters(location='sidebar')
+dynamic_filters_dates.display_filters(location='sidebar')
 
 st.write("Filtered dataframe:")
 
 # display dynamic dataframe in the main area
 dynamic_filters.display_df()
 
+st.write("Filtered dates:")
+dynamic_filters_dates.display_df()
+
 with st.sidebar:
     st.button('Reset All Filters', on_click=clear_cache)
     st.write("Connect with me on [LinkedIn](https://www.linkedin.com/in/oleksandr-arsentiev-5554b3168/),"
              " [GitHub](https://github.com/arsentievalex), [Twitter](https://twitter.com/alexarsentiev)")
 
-    st.write("If you like this package, please consider giving it a ⭐ on [GitHub](https://github.com/arsentievalex/streamlit-dynamic-filters) or [buying me a coffee](https://www.buymeacoffee.com/arsentiev) ☕")
+    st.write(
+        "If you like this package, please consider giving it a ⭐ on [GitHub](https://github.com/arsentievalex/streamlit-dynamic-filters) or [buying me a coffee](https://www.buymeacoffee.com/arsentiev) ☕")
