@@ -100,22 +100,22 @@ with st.expander("See this app's code"):
     st.code(code, language='python')
 
 dynamic_filters = DynamicFilters(df, filters=['region', 'country', 'city', 'district'], filters_name='data2')
-dynamic_filters_dates = DynamicFilters(dt, filters=['years', 'months'], filters_name='dates2')
+#dynamic_filters_dates = DynamicFilters(dt, filters=['years', 'months'], filters_name='dates2')
 
 # display filters in the sidebar
 with st.sidebar:
     st.write("Apply filters in any order 👇")
 
 dynamic_filters.display_filters(location='sidebar')
-dynamic_filters_dates.display_filters(location='sidebar')
+#dynamic_filters_dates.display_filters(location='sidebar')
 
 st.write("Filtered dataframe:")
 
 # display dynamic dataframe in the main area
 dynamic_filters.display_df()
 
-st.write("Filtered dates:")
-dynamic_filters_dates.display_df()
+#st.write("Filtered dates:")
+#dynamic_filters_dates.display_df()
 
 with st.sidebar:
     st.button('Reset All Filters', on_click=clear_cache)
