@@ -3,12 +3,6 @@ import pandas as pd
 from streamlit_dynamic_filters import DynamicFilters
 
 
-def clear_cache():
-    keys = list(st.session_state.keys())
-    for key in keys:
-        st.session_state.pop(key)
-
-
 # wide layout
 st.set_page_config(layout="wide")
 
@@ -118,7 +112,8 @@ dynamic_filters.display_df()
 #dynamic_filters_dates.display_df()
 
 with st.sidebar:
-    st.button('Reset All Filters', on_click=clear_cache)
+    st.button("Reset Filters", on_click=dynamic_filters.reset_filters)
+
     st.write("Connect with me on [LinkedIn](https://www.linkedin.com/in/oleksandr-arsentiev-5554b3168/),"
              " [GitHub](https://github.com/arsentievalex), [Twitter](https://twitter.com/alexarsentiev)")
 
